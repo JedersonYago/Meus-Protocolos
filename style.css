@@ -1119,3 +1119,89 @@ body {
         padding: 20px;
     }
 }
+
+/* =====================================================
+   MENU DAS CATEGORIAS
+===================================================== */
+
+.category-item {
+    position: relative;
+}
+
+.category-name {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.category-menu-button {
+    border: none;
+    background: transparent;
+    color: inherit;
+    font-size: 20px;
+    line-height: 1;
+    padding: 2px 5px;
+    cursor: pointer;
+    opacity: 0;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+
+.category-item:hover .category-menu-button,
+.category-menu-button:focus {
+    opacity: 1;
+}
+
+.category-menu-button:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.category-menu {
+    display: none;
+    position: absolute;
+    right: 8px;
+    top: calc(100% - 2px);
+    z-index: 100;
+    min-width: 140px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 5px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.category-menu.show {
+    display: block;
+}
+
+.category-menu button {
+    display: block;
+    width: 100%;
+    border: none;
+    background: transparent;
+    color: #374151;
+    text-align: left;
+    padding: 9px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.category-menu button:hover {
+    background: #f3f4f6;
+}
+
+.category-menu .category-delete {
+    color: #dc2626;
+}
+
+.category-menu .category-delete:hover {
+    background: #fef2f2;
+}
+
+.category-menu .category-delete:disabled {
+    background: transparent;
+}
+
