@@ -1,10 +1,11 @@
+"use strict";
+
 /* =====================================================
    CONFIGURAÇÕES
 ===================================================== */
 
-const STORAGE_PROTOCOLS = "meus_protocolos_v3";
-const STORAGE_CATEGORIES = "minhas_categorias_v2";
-const STORAGE_SUBCATEGORIES = "minhas_subcategorias_v1";
+const STORAGE_PROTOCOLS = "meus_protocolos_v2";
+const STORAGE_CATEGORIES = "minhas_categorias_v1";
 
 
 /* =====================================================
@@ -12,333 +13,39 @@ const STORAGE_SUBCATEGORIES = "minhas_subcategorias_v1";
 ===================================================== */
 
 const categoriasPadrao = [
-
     {
-        id: "internet",
-        nome: "INTERNET / CONEXÃO"
+        id: "conexao",
+        nome: "CONEXÃO"
     },
-
-    {
-        id: "fibra",
-        nome: "FIBRA / SINAL"
-    },
-
-    {
-        id: "wifi",
-        nome: "WI-FI / ROTEADOR"
-    },
-
-    {
-        id: "velocidade",
-        nome: "VELOCIDADE"
-    },
-
-    {
-        id: "tv",
-        nome: "TV"
-    },
-
-    {
-        id: "telefonia",
-        nome: "TELEFONIA"
-    },
-
     {
         id: "financeiro",
         nome: "FINANCEIRO"
     },
-
     {
-        id: "servicos",
-        nome: "ENDEREÇO / SERVIÇOS"
+        id: "cadastro",
+        nome: "CADASTRO"
     },
-
     {
         id: "equipamentos",
         nome: "EQUIPAMENTOS"
     },
-
     {
         id: "aplicativos",
-        nome: "APLICATIVOS / SERVIÇOS"
+        nome: "APLICATIVOS"
     },
-
     {
-        id: "informacoes",
-        nome: "INFORMAÇÕES"
-    },
-
-    {
-        id: "ofertas",
-        nome: "OFERTAS"
+        id: "outros",
+        nome: "OUTROS"
     }
-
-];
-
-
-/* =====================================================
-   SUBCATEGORIAS PADRÃO
-===================================================== */
-
-const subcategoriasPadrao = [
-
-    /* INTERNET */
-
-    {
-        id: "instabilidade",
-        categoriaId: "internet",
-        nome: "INSTABILIDADE"
-    },
-
-    {
-        id: "sem-acesso",
-        categoriaId: "internet",
-        nome: "SEM ACESSO"
-    },
-
-    {
-        id: "fwa",
-        categoriaId: "internet",
-        nome: "FWA"
-    },
-
-    {
-        id: "ping",
-        categoriaId: "internet",
-        nome: "PING"
-    },
-
-
-    /* FIBRA */
-
-    {
-        id: "los",
-        categoriaId: "fibra",
-        nome: "LOS"
-    },
-
-    {
-        id: "pon",
-        categoriaId: "fibra",
-        nome: "PON"
-    },
-
-    {
-        id: "rota",
-        categoriaId: "fibra",
-        nome: "ROTA"
-    },
-
-    {
-        id: "sinal-irregular",
-        categoriaId: "fibra",
-        nome: "SINAL IRREGULAR"
-    },
-
-    {
-        id: "cabo-fibra",
-        categoriaId: "fibra",
-        nome: "CABO DE FIBRA"
-    },
-
-    {
-        id: "instalacao",
-        categoriaId: "fibra",
-        nome: "INSTALAÇÃO"
-    },
-
-
-    /* WI-FI */
-
-    {
-        id: "senha",
-        categoriaId: "wifi",
-        nome: "SENHA"
-    },
-
-    {
-        id: "roteador-gerencia",
-        categoriaId: "wifi",
-        nome: "ROTEADOR SEM GERÊNCIA"
-    },
-
-    {
-        id: "tp-link",
-        categoriaId: "wifi",
-        nome: "TP-LINK"
-    },
-
-    {
-        id: "wps",
-        categoriaId: "wifi",
-        nome: "WPS"
-    },
-
-    {
-        id: "pppoe",
-        categoriaId: "wifi",
-        nome: "PPPoE"
-    },
-
-
-    /* VELOCIDADE */
-
-    {
-        id: "plano-velocidade",
-        categoriaId: "velocidade",
-        nome: "PLANO NÃO CHEGA AO CONTRATADO"
-    },
-
-
-    /* TV */
-
-    {
-        id: "canais",
-        categoriaId: "tv",
-        nome: "CANAIS"
-    },
-
-    {
-        id: "instabilidade-tv",
-        categoriaId: "tv",
-        nome: "INSTABILIDADE"
-    },
-
-    {
-        id: "receptor",
-        categoriaId: "tv",
-        nome: "RECEPTOR"
-    },
-
-    {
-        id: "sem-sinal-tv",
-        categoriaId: "tv",
-        nome: "SEM SINAL"
-    },
-
-
-    /* TELEFONIA */
-
-    {
-        id: "autenticacao",
-        categoriaId: "telefonia",
-        nome: "AUTENTICAÇÃO"
-    },
-
-    {
-        id: "linha",
-        categoriaId: "telefonia",
-        nome: "LINHA"
-    },
-
-    {
-        id: "desbloqueios",
-        categoriaId: "telefonia",
-        nome: "DESBLOQUEIOS"
-    },
-
-
-    /* FINANCEIRO */
-
-    {
-        id: "bloqueio",
-        categoriaId: "financeiro",
-        nome: "BLOQUEIO FINANCEIRO"
-    },
-
-    {
-        id: "cobranca-reparo",
-        categoriaId: "financeiro",
-        nome: "COBRANÇA DE REPARO"
-    },
-
-
-    /* SERVIÇOS */
-
-    {
-        id: "endereco",
-        categoriaId: "servicos",
-        nome: "ENDEREÇO"
-    },
-
-    {
-        id: "comodo",
-        categoriaId: "servicos",
-        nome: "ALTERAÇÃO DE CÔMODO"
-    },
-
-    {
-        id: "conecta",
-        categoriaId: "servicos",
-        nome: "CONECTA +"
-    },
-
-
-    /* EQUIPAMENTOS */
-
-    {
-        id: "equipamento",
-        categoriaId: "equipamentos",
-        nome: "EQUIPAMENTO"
-    },
-
-    {
-        id: "ip-fixo",
-        categoriaId: "equipamentos",
-        nome: "IP FIXO"
-    },
-
-
-    /* APLICATIVOS */
-
-    {
-        id: "apps-instabilidade",
-        categoriaId: "aplicativos",
-        nome: "APLICATIVOS COM INSTABILIDADE"
-    },
-
-    {
-        id: "globoplay",
-        categoriaId: "aplicativos",
-        nome: "GLOBOPLAY"
-    },
-
-    {
-        id: "iptv",
-        categoriaId: "aplicativos",
-        nome: "IPTV"
-    },
-
-
-    /* INFORMAÇÕES */
-
-    {
-        id: "informacoes-ip",
-        categoriaId: "informacoes",
-        nome: "IP FIXO"
-    },
-
-    {
-        id: "informacoes-gerais",
-        categoriaId: "informacoes",
-        nome: "INFORMAÇÕES GERAIS"
-    },
-
-
-    /* OFERTAS */
-
-    {
-        id: "chip-5g",
-        categoriaId: "ofertas",
-        nome: "CHIP 5G"
-    }
-
 ];
 
 
 /* =====================================================
    ELEMENTOS
 ===================================================== */
+
+const listaProtocolos =
+    document.getElementById("listaProtocolos");
 
 const listaCategorias =
     document.getElementById("listaCategorias");
@@ -353,7 +60,7 @@ const conteudo =
     document.getElementById("conteudo");
 
 
-/* Modal protocolo */
+/* MODAL PROTOCOLO */
 
 const modalProtocolo =
     document.getElementById("modalProtocolo");
@@ -367,9 +74,6 @@ const nomeProtocolo =
 const categoriaProtocolo =
     document.getElementById("categoriaProtocolo");
 
-const subcategoriaProtocolo =
-    document.getElementById("subcategoriaProtocolo");
-
 const textoProtocolo =
     document.getElementById("textoProtocolo");
 
@@ -377,13 +81,10 @@ const formProtocolo =
     document.getElementById("formProtocolo");
 
 
-/* Modal categoria */
+/* MODAL CATEGORIA */
 
 const modalCategoria =
     document.getElementById("modalCategoria");
-
-const tituloCategoriaModal =
-    document.getElementById("tituloCategoriaModal");
 
 const nomeCategoria =
     document.getElementById("nomeCategoria");
@@ -392,133 +93,140 @@ const formCategoria =
     document.getElementById("formCategoria");
 
 
-/* Modal subcategoria */
-
-const modalSubcategoria =
-    document.getElementById("modalSubcategoria");
-
-const tituloSubcategoriaModal =
-    document.getElementById("tituloSubcategoriaModal");
-
-const categoriaDaSubcategoria =
-    document.getElementById("categoriaDaSubcategoria");
-
-const nomeSubcategoria =
-    document.getElementById("nomeSubcategoria");
-
-const formSubcategoria =
-    document.getElementById("formSubcategoria");
-
-
 /* =====================================================
    ESTADO
 ===================================================== */
 
 let protocolos =
-    carregarDados(
-        STORAGE_PROTOCOLS,
-        []
-    );
-
+    carregarProtocolos();
 
 let categorias =
-    carregarDados(
-        STORAGE_CATEGORIES,
-        categoriasPadrao
-    );
+    carregarCategorias();
 
+let protocoloSelecionado =
+    null;
 
-let subcategorias =
-    carregarDados(
-        STORAGE_SUBCATEGORIES,
-        subcategoriasPadrao
-    );
+let categoriaSelecionada =
+    "todos";
 
-
-let protocoloSelecionado = null;
-
-let categoriaSelecionada = "todos";
-
-let subcategoriaSelecionada = null;
-
-let modoEdicaoProtocolo = false;
-
-let modoEdicaoCategoria = false;
-
-let modoEdicaoSubcategoria = false;
-
-let categoriaAberta = {};
+let modoEdicao =
+    false;
 
 
 /* =====================================================
-   CARREGAR DADOS
+   CARREGAR PROTOCOLOS
 ===================================================== */
 
-function carregarDados(chave, padrao) {
+function carregarProtocolos() {
 
     try {
 
         const dados =
-            localStorage.getItem(chave);
+            localStorage.getItem(
+                STORAGE_PROTOCOLS
+            );
 
         if (!dados) {
-
-            localStorage.setItem(
-                chave,
-                JSON.stringify(padrao)
-            );
-
-            return JSON.parse(
-                JSON.stringify(padrao)
-            );
-
+            return [];
         }
 
-        return JSON.parse(dados);
+        const resultado =
+            JSON.parse(dados);
+
+        return Array.isArray(resultado)
+            ? resultado
+            : [];
 
     } catch (erro) {
 
         console.error(
-            "Erro ao carregar:",
-            chave,
+            "Erro ao carregar protocolos:",
             erro
         );
 
-        return JSON.parse(
-            JSON.stringify(padrao)
-        );
-
+        return [];
     }
-
 }
 
 
 /* =====================================================
-   SALVAR
+   CARREGAR CATEGORIAS
 ===================================================== */
 
-function salvarTudo() {
+function carregarCategorias() {
+
+    try {
+
+        const dados =
+            localStorage.getItem(
+                STORAGE_CATEGORIES
+            );
+
+        if (!dados) {
+
+            localStorage.setItem(
+                STORAGE_CATEGORIES,
+                JSON.stringify(
+                    categoriasPadrao
+                )
+            );
+
+            return [
+                ...categoriasPadrao
+            ];
+        }
+
+        const resultado =
+            JSON.parse(dados);
+
+        return Array.isArray(resultado)
+            ? resultado
+            : [
+                ...categoriasPadrao
+            ];
+
+    } catch (erro) {
+
+        console.error(
+            "Erro ao carregar categorias:",
+            erro
+        );
+
+        return [
+            ...categoriasPadrao
+        ];
+    }
+}
+
+
+/* =====================================================
+   SALVAR DADOS
+===================================================== */
+
+function salvarProtocolos() {
 
     localStorage.setItem(
         STORAGE_PROTOCOLS,
-        JSON.stringify(protocolos)
+        JSON.stringify(
+            protocolos
+        )
     );
+}
+
+
+function salvarCategorias() {
 
     localStorage.setItem(
         STORAGE_CATEGORIES,
-        JSON.stringify(categorias)
+        JSON.stringify(
+            categorias
+        )
     );
-
-    localStorage.setItem(
-        STORAGE_SUBCATEGORIES,
-        JSON.stringify(subcategorias)
-    );
-
 }
 
 
 /* =====================================================
-   RENDERIZAR ÁRVORE
+   RENDERIZAR CATEGORIAS
 ===================================================== */
 
 function renderizarCategorias() {
@@ -535,20 +243,16 @@ function renderizarCategorias() {
         "category-item";
 
     if (
-        categoriaSelecionada === "todos" &&
-        !subcategoriaSelecionada
+        categoriaSelecionada ===
+        "todos"
     ) {
 
-        todos.classList.add("active");
-
+        todos.classList.add(
+            "active"
+        );
     }
 
     todos.innerHTML = `
-
-        <span class="category-arrow">
-            •
-        </span>
-
         <span class="category-icon">
             ▣
         </span>
@@ -560,7 +264,6 @@ function renderizarCategorias() {
         <span class="category-count">
             ${protocolos.length}
         </span>
-
     `;
 
     todos.addEventListener(
@@ -570,20 +273,15 @@ function renderizarCategorias() {
             categoriaSelecionada =
                 "todos";
 
-            subcategoriaSelecionada =
-                null;
-
-            protocoloSelecionado =
-                null;
-
             renderizarCategorias();
-
-            mostrarTelaInicial();
+            renderizarLista();
 
         }
     );
 
-    listaCategorias.appendChild(todos);
+    listaCategorias.appendChild(
+        todos
+    );
 
 
     /* CATEGORIAS */
@@ -591,23 +289,10 @@ function renderizarCategorias() {
     categorias.forEach(
         categoria => {
 
-            const wrapper =
-                document.createElement("div");
-
-            wrapper.className =
-                "category-wrapper";
-
-
-            const quantidadeCategoria =
-                protocolos.filter(
-                    protocolo =>
-                        protocolo.categoriaId ===
-                        categoria.id
-                ).length;
-
-
             const item =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
             item.className =
                 "category-item";
@@ -615,73 +300,72 @@ function renderizarCategorias() {
 
             if (
                 categoriaSelecionada ===
-                categoria.id &&
-                !subcategoriaSelecionada
+                categoria.id
             ) {
 
-                item.classList.add("active");
-
+                item.classList.add(
+                    "active"
+                );
             }
 
 
-            const subcats =
-                subcategorias.filter(
-                    sub =>
-                        sub.categoriaId ===
+            const quantidade =
+                protocolos.filter(
+                    protocolo =>
+                        protocolo.categoriaId ===
                         categoria.id
-                );
-
-
-            const aberta =
-                categoriaAberta[categoria.id] === true;
+                ).length;
 
 
             item.innerHTML = `
 
-                <span class="category-arrow ${
-                    aberta ? "open" : ""
-                }">
-                    ›
-                </span>
-
                 <span class="category-icon">
-                    📁
+                    ▰
                 </span>
 
                 <span class="category-name">
-                    ${escaparHTML(categoria.nome)}
                 </span>
 
                 <span class="category-count">
-                    ${quantidadeCategoria}
+                    ${quantidade}
                 </span>
 
-                <span class="category-actions">
+                <button
+                    class="category-menu-button"
+                    title="Opções">
+
+                    ⋮
+
+                </button>
+
+                <div
+                    class="category-menu">
 
                     <button
-                        class="tree-button add-sub"
-                        title="Nova subcategoria">
-                        +
+                        class="category-edit">
+
+                        ✏️ Editar
+
                     </button>
 
                     <button
-                        class="tree-button edit-cat"
-                        title="Editar categoria">
-                        ✏
+                        class="category-delete">
+
+                        🗑️ Excluir
+
                     </button>
 
-                    <button
-                        class="tree-button delete"
-                        title="Excluir categoria">
-                        🗑
-                    </button>
-
-                </span>
-
+                </div>
             `;
 
 
-            /* Clique na categoria */
+            item.querySelector(
+                ".category-name"
+            ).textContent =
+                categoria.nome;
+
+
+            /* SELECIONAR CATEGORIA */
 
             item.addEventListener(
                 "click",
@@ -689,48 +373,73 @@ function renderizarCategorias() {
 
                     if (
                         event.target.closest(
-                            ".category-actions"
+                            ".category-menu-button"
+                        ) ||
+                        event.target.closest(
+                            ".category-menu"
                         )
                     ) {
 
                         return;
-
                     }
 
 
                     categoriaSelecionada =
                         categoria.id;
 
-                    subcategoriaSelecionada =
-                        null;
-
-                    protocoloSelecionado =
-                        null;
-
-                    categoriaAberta[
-                        categoria.id
-                    ] =
-                        !aberta;
-
                     renderizarCategorias();
-
-                    renderizarListaFiltrada();
+                    renderizarLista();
 
                 }
             );
 
 
-            /* Adicionar subcategoria */
+            /* BOTÃO ⋮ */
 
-            item.querySelector(
-                ".add-sub"
-            ).addEventListener(
+            const menuButton =
+                item.querySelector(
+                    ".category-menu-button"
+                );
+
+
+            menuButton.addEventListener(
                 "click",
                 event => {
 
                     event.stopPropagation();
 
-                    abrirNovaSubcategoria(
+                    fecharMenusCategoria();
+
+                    const menu =
+                        item.querySelector(
+                            ".category-menu"
+                        );
+
+                    menu.classList.toggle(
+                        "show"
+                    );
+
+                }
+            );
+
+
+            /* EDITAR */
+
+            const btnEditar =
+                item.querySelector(
+                    ".category-edit"
+                );
+
+
+            btnEditar.addEventListener(
+                "click",
+                event => {
+
+                    event.stopPropagation();
+
+                    fecharMenusCategoria();
+
+                    editarCategoria(
                         categoria.id
                     );
 
@@ -738,360 +447,339 @@ function renderizarCategorias() {
             );
 
 
-            /* Editar categoria */
+            /* EXCLUIR */
 
-            item.querySelector(
-                ".edit-cat"
-            ).addEventListener(
-                "click",
-                event => {
-
-                    event.stopPropagation();
-
-                    abrirEdicaoCategoria(
-                        categoria.id
-                    );
-
-                }
-            );
+            const btnExcluir =
+                item.querySelector(
+                    ".category-delete"
+                );
 
 
-            /* Excluir categoria */
+            /*
+               OUTROS não pode ser excluída.
+            */
 
-            item.querySelector(
-                ".delete"
-            ).addEventListener(
-                "click",
-                event => {
+            if (
+                categoria.id ===
+                "outros"
+            ) {
 
-                    event.stopPropagation();
+                btnExcluir.disabled =
+                    true;
 
-                    excluirCategoria(
-                        categoria.id
-                    );
+                btnExcluir.title =
+                    "A categoria OUTROS não pode ser excluída.";
 
-                }
-            );
+                btnExcluir.style.opacity =
+                    "0.4";
 
+                btnExcluir.style.cursor =
+                    "not-allowed";
 
-            wrapper.appendChild(item);
+            } else {
 
+                btnExcluir.addEventListener(
+                    "click",
+                    event => {
 
-            /* SUBCATEGORIAS */
+                        event.stopPropagation();
 
-            if (subcats.length > 0) {
+                        fecharMenusCategoria();
 
-                const subList =
-                    document.createElement("div");
-
-                subList.className =
-                    "subcategory-list";
-
-
-                if (aberta) {
-
-                    subList.classList.add("open");
-
-                }
-
-
-                subcats.forEach(
-                    subcategoria => {
-
-                        const subItem =
-                            criarSubcategoriaItem(
-                                subcategoria
-                            );
-
-                        subList.appendChild(
-                            subItem
+                        excluirCategoria(
+                            categoria.id
                         );
 
                     }
                 );
-
-
-                wrapper.appendChild(
-                    subList
-                );
-
             }
 
 
             listaCategorias.appendChild(
-                wrapper
+                item
             );
 
         }
     );
-
-
-    atualizarContador();
-
 }
 
 
 /* =====================================================
-   CRIAR ITEM DE SUBCATEGORIA
+   FECHAR MENUS DE CATEGORIA
 ===================================================== */
 
-function criarSubcategoriaItem(
-    subcategoria
-) {
+function fecharMenusCategoria() {
 
-    const wrapper =
-        document.createElement("div");
+    document
+        .querySelectorAll(
+            ".category-menu.show"
+        )
+        .forEach(
+            menu => {
+
+                menu.classList.remove(
+                    "show"
+                );
+
+            }
+        );
+}
+
+
+/* =====================================================
+   FECHAR MENU AO CLICAR FORA
+===================================================== */
+
+document.addEventListener(
+    "click",
+    () => {
+
+        fecharMenusCategoria();
+
+    }
+);
+
+
+/* =====================================================
+   EDITAR CATEGORIA
+===================================================== */
+
+function editarCategoria(id) {
+
+    const categoria =
+        categorias.find(
+            item =>
+                item.id === id
+        );
+
+
+    if (!categoria) {
+        return;
+    }
+
+
+    const novoNome =
+        prompt(
+            "Digite o novo nome da categoria:",
+            categoria.nome
+        );
+
+
+    if (
+        novoNome === null
+    ) {
+
+        return;
+    }
+
+
+    const nome =
+        novoNome.trim();
+
+
+    if (!nome) {
+
+        mostrarToast(
+            "Digite um nome válido."
+        );
+
+        return;
+    }
+
+
+    /* VERIFICAR DUPLICADA */
+
+    const existe =
+        categorias.some(
+            item =>
+                item.id !== id &&
+                item.nome.toLowerCase() ===
+                nome.toLowerCase()
+        );
+
+
+    if (existe) {
+
+        mostrarToast(
+            "Essa categoria já existe."
+        );
+
+        return;
+    }
+
+
+    categoria.nome =
+        nome.toUpperCase();
+
+
+    salvarCategorias();
+
+
+    renderizarCategorias();
+
+    renderizarLista();
+
+
+    if (
+        protocoloSelecionado
+    ) {
+
+        renderizarProtocolo();
+
+    }
+
+
+    mostrarToast(
+        "✓ Categoria atualizada!"
+    );
+}
+
+
+/* =====================================================
+   EXCLUIR CATEGORIA
+===================================================== */
+
+function excluirCategoria(id) {
+
+    const categoria =
+        categorias.find(
+            item =>
+                item.id === id
+        );
+
+
+    if (!categoria) {
+        return;
+    }
+
+
+    /* PROTEGER OUTROS */
+
+    if (
+        categoria.id ===
+        "outros"
+    ) {
+
+        mostrarToast(
+            "A categoria OUTROS não pode ser excluída."
+        );
+
+        return;
+    }
 
 
     const quantidade =
         protocolos.filter(
             protocolo =>
-                protocolo.subcategoriaId ===
-                subcategoria.id
+                protocolo.categoriaId === id
         ).length;
 
 
-    const ativo =
-        subcategoriaSelecionada ===
-        subcategoria.id;
+    let mensagem =
+        `Deseja excluir a categoria "${categoria.nome}"?`;
 
 
-    const item =
-        document.createElement("div");
+    if (quantidade > 0) {
 
+        mensagem +=
+            `\n\nExistem ${quantidade} protocolo(s) nesta categoria.`;
 
-    item.className =
-        "subcategory-item";
-
-
-    if (ativo) {
-
-        item.classList.add("active");
+        mensagem +=
+            "\nEles serão movidos para a categoria OUTROS.";
 
     }
 
 
-    item.innerHTML = `
-
-        <span class="subcategory-dot">
-            •
-        </span>
-
-        <span class="subcategory-name">
-            ${escaparHTML(subcategoria.nome)}
-        </span>
-
-        <span class="subcategory-count">
-            ${quantidade}
-        </span>
-
-        <span class="subcategory-actions">
-
-            <button
-                class="tree-button edit-sub"
-                title="Editar subcategoria">
-                ✏
-            </button>
-
-            <button
-                class="tree-button delete delete-sub"
-                title="Excluir subcategoria">
-                🗑
-            </button>
-
-        </span>
-
-    `;
+    const confirmar =
+        confirm(
+            mensagem
+        );
 
 
-    item.addEventListener(
-        "click",
-        event => {
+    if (!confirmar) {
+        return;
+    }
 
-            if (
-                event.target.closest(
-                    ".subcategory-actions"
-                )
-            ) {
 
-                return;
+    /* MOVER PROTOCOLOS PARA OUTROS */
+
+    protocolos =
+        protocolos.map(
+            protocolo => {
+
+                if (
+                    protocolo.categoriaId ===
+                    id
+                ) {
+
+                    return {
+                        ...protocolo,
+                        categoriaId: "outros"
+                    };
+                }
+
+                return protocolo;
 
             }
-
-
-            const categoria =
-                categorias.find(
-                    cat =>
-                        cat.id ===
-                        subcategoria.categoriaId
-                );
-
-
-            categoriaSelecionada =
-                categoria
-                ? categoria.id
-                : "todos";
-
-
-            subcategoriaSelecionada =
-                subcategoria.id;
-
-
-            protocoloSelecionado =
-                null;
-
-
-            renderizarCategorias();
-
-            renderizarListaFiltrada();
-
-        }
-    );
-
-
-    /* Editar */
-
-    item.querySelector(
-        ".edit-sub"
-    ).addEventListener(
-        "click",
-        event => {
-
-            event.stopPropagation();
-
-            abrirEdicaoSubcategoria(
-                subcategoria.id
-            );
-
-        }
-    );
-
-
-    /* Excluir */
-
-    item.querySelector(
-        ".delete-sub"
-    ).addEventListener(
-        "click",
-        event => {
-
-            event.stopPropagation();
-
-            excluirSubcategoria(
-                subcategoria.id
-            );
-
-        }
-    );
-
-
-    /* Protocolos */
-
-    const protocolosDaSubcategoria =
-        protocolos.filter(
-            protocolo =>
-                protocolo.subcategoriaId ===
-                subcategoria.id
         );
 
+
+    /* EXCLUIR CATEGORIA */
+
+    categorias =
+        categorias.filter(
+            categoria =>
+                categoria.id !== id
+        );
+
+
+    /* SE ESTAVA SELECIONADA */
 
     if (
-        protocolosDaSubcategoria.length > 0
+        categoriaSelecionada === id
     ) {
 
-        const listaProtocolos =
-            document.createElement("div");
-
-        listaProtocolos.className =
-            "protocol-list-tree";
-
-
-        protocolosDaSubcategoria
-            .filter(
-                protocolo =>
-                    correspondePesquisa(
-                        protocolo
-                    )
-            )
-            .forEach(
-                protocolo => {
-
-                    const p =
-                        document.createElement("div");
-
-                    p.className =
-                        "protocol-sidebar-item";
-
-
-                    if (
-                        protocoloSelecionado &&
-                        protocoloSelecionado.id ===
-                        protocolo.id
-                    ) {
-
-                        p.classList.add(
-                            "active"
-                        );
-
-                    }
-
-
-                    p.innerHTML = `
-
-                        <span class="protocol-sidebar-icon">
-                            ▣
-                        </span>
-
-                        <span class="protocol-sidebar-name">
-                            ${escaparHTML(
-                                protocolo.nome
-                            )}
-                        </span>
-
-                    `;
-
-
-                    p.addEventListener(
-                        "click",
-                        () => {
-
-                            selecionarProtocolo(
-                                protocolo.id
-                            );
-
-                        }
-                    );
-
-
-                    listaProtocolos.appendChild(
-                        p
-                    );
-
-                }
-            );
-
-
-        wrapper.appendChild(
-            listaProtocolos
-        );
+        categoriaSelecionada =
+            "todos";
 
     }
 
 
-    wrapper.appendChild(item);
+    /* SE PROTOCOLO SELECIONADO FOI MOVIDO */
 
-    return wrapper;
+    if (
+        protocoloSelecionado &&
+        protocoloSelecionado.categoriaId === id
+    ) {
 
+        protocoloSelecionado.categoriaId =
+            "outros";
+    }
+
+
+    salvarProtocolos();
+
+    salvarCategorias();
+
+
+    renderizarCategorias();
+
+    renderizarLista();
+
+    renderizarProtocolo();
+
+
+    mostrarToast(
+        "✓ Categoria excluída!"
+    );
 }
 
 
 /* =====================================================
-   PESQUISA
+   RENDERIZAR LISTA DE PROTOCOLOS
 ===================================================== */
 
-function correspondePesquisa(
-    protocolo
-) {
+function renderizarLista() {
 
     const pesquisa =
         campoPesquisa.value
@@ -1099,164 +787,172 @@ function correspondePesquisa(
             .toLowerCase();
 
 
-    if (!pesquisa) {
-
-        return true;
-
-    }
+    let resultados =
+        [...protocolos];
 
 
-    return (
-        protocolo.nome
-            .toLowerCase()
-            .includes(pesquisa) ||
-
-        protocolo.texto
-            .toLowerCase()
-            .includes(pesquisa)
-    );
-
-}
-
-
-/* =====================================================
-   RENDERIZAR LISTA FILTRADA
-===================================================== */
-
-function renderizarListaFiltrada() {
-
-    renderizarCategorias();
-
-
-    if (
-        subcategoriaSelecionada
-    ) {
-
-        const encontrados =
-            protocolos.filter(
-                protocolo =>
-
-                    protocolo.subcategoriaId ===
-                    subcategoriaSelecionada &&
-
-                    correspondePesquisa(
-                        protocolo
-                    )
-            );
-
-
-        if (
-            encontrados.length === 0
-        ) {
-
-            mostrarListaVazia();
-
-        }
-
-        return;
-
-    }
-
+    /* CATEGORIA */
 
     if (
         categoriaSelecionada !==
         "todos"
     ) {
 
-        const encontrados =
-            protocolos.filter(
+        resultados =
+            resultados.filter(
                 protocolo =>
-
                     protocolo.categoriaId ===
-                    categoriaSelecionada &&
-
-                    correspondePesquisa(
-                        protocolo
-                    )
+                    categoriaSelecionada
             );
-
-
-        if (
-            encontrados.length === 0
-        ) {
-
-            mostrarListaVazia();
-
-        }
-
-        return;
-
     }
+
+
+    /* PESQUISA */
+
+    if (pesquisa) {
+
+        resultados =
+            resultados.filter(
+                protocolo => {
+
+                    const nome =
+                        String(
+                            protocolo.nome ||
+                            ""
+                        ).toLowerCase();
+
+
+                    const texto =
+                        String(
+                            protocolo.texto ||
+                            ""
+                        ).toLowerCase();
+
+
+                    return (
+                        nome.includes(
+                            pesquisa
+                        ) ||
+                        texto.includes(
+                            pesquisa
+                        )
+                    );
+
+                }
+            );
+    }
+
+
+    listaProtocolos.innerHTML =
+        "";
 
 
     if (
-        campoPesquisa.value.trim()
+        resultados.length === 0
     ) {
 
-        const encontrados =
-            protocolos.filter(
-                correspondePesquisa
+        listaProtocolos.innerHTML = `
+
+            <div class="no-results">
+
+                ${
+                    pesquisa
+                        ? "Nenhum protocolo encontrado."
+                        : "Nenhum protocolo nesta categoria."
+                }
+
+            </div>
+
+        `;
+
+
+        atualizarContador();
+
+        return;
+    }
+
+
+    resultados.forEach(
+        protocolo => {
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+
+            item.className =
+                "protocol-item";
+
+
+            if (
+                protocoloSelecionado &&
+                protocoloSelecionado.id ===
+                protocolo.id
+            ) {
+
+                item.classList.add(
+                    "active"
+                );
+            }
+
+
+            item.innerHTML = `
+
+                <span class="protocol-item-icon">
+                    ▣
+                </span>
+
+                <span class="protocol-name">
+                </span>
+
+            `;
+
+
+            item.querySelector(
+                ".protocol-name"
+            ).textContent =
+                protocolo.nome;
+
+
+            item.addEventListener(
+                "click",
+                () => {
+
+                    selecionarProtocolo(
+                        protocolo.id
+                    );
+
+                }
             );
 
 
-        if (
-            encontrados.length === 0
-        ) {
-
-            mostrarListaVazia();
+            listaProtocolos.appendChild(
+                item
+            );
 
         }
+    );
 
-    }
 
+    atualizarContador();
 }
 
 
 /* =====================================================
-   LISTA VAZIA
+   CONTADOR
 ===================================================== */
 
-function mostrarListaVazia() {
+function atualizarContador() {
 
-    conteudo.innerHTML = `
-
-        <div class="welcome">
-
-            <div class="welcome-icon">
-                🔎
-            </div>
-
-            <h1>
-                Nenhum protocolo encontrado
-            </h1>
-
-            <p>
-                Não encontramos protocolos para
-                os filtros selecionados.
-            </p>
-
-            <button
-                class="primary-button"
-                id="btnNovoBusca">
-
-                + Criar protocolo
-
-            </button>
-
-        </div>
-
-    `;
+    const quantidade =
+        protocolos.length;
 
 
-    document
-        .getElementById(
-            "btnNovoBusca"
-        )
-        .addEventListener(
-            "click",
-            abrirNovoProtocolo
-        );
-
+    contadorProtocolos.textContent =
+        quantidade === 1
+            ? "1 protocolo"
+            : `${quantidade} protocolos`;
 }
 
 
@@ -1274,9 +970,7 @@ function selecionarProtocolo(id) {
 
 
     if (!protocolo) {
-
         return;
-
     }
 
 
@@ -1284,23 +978,9 @@ function selecionarProtocolo(id) {
         protocolo;
 
 
-    categoriaSelecionada =
-        protocolo.categoriaId;
-
-
-    subcategoriaSelecionada =
-        protocolo.subcategoriaId;
-
-
-    categoriaAberta[
-        protocolo.categoriaId
-    ] = true;
-
-
-    renderizarCategorias();
-
     renderizarProtocolo();
 
+    renderizarLista();
 }
 
 
@@ -1315,32 +995,44 @@ function renderizarProtocolo() {
         mostrarTelaInicial();
 
         return;
-
     }
 
 
-    conteudo.innerHTML = "";
+    conteudo.innerHTML =
+        "";
 
 
     const container =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
     container.className =
         "protocol-view";
 
 
+    /* CABEÇALHO */
+
     const header =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
     header.className =
         "protocol-header";
 
 
     const titulo =
-        document.createElement("h1");
+        document.createElement(
+            "h1"
+        );
+
 
     titulo.className =
         "protocol-title";
+
 
     titulo.textContent =
         protocoloSelecionado.nome;
@@ -1354,76 +1046,74 @@ function renderizarProtocolo() {
         );
 
 
-    const subcategoria =
-        subcategorias.find(
-            item =>
-                item.id ===
-                protocoloSelecionado.subcategoriaId
+    const categoriaTexto =
+        document.createElement(
+            "div"
         );
 
-
-    const categoriaTexto =
-        document.createElement("span");
 
     categoriaTexto.className =
         "protocol-category";
 
+
     categoriaTexto.textContent =
         categoria
-        ? categoria.nome
-        : "SEM CATEGORIA";
+            ? categoria.nome
+            : "SEM CATEGORIA";
 
 
-    const subcategoriaTexto =
-        document.createElement("span");
-
-    subcategoriaTexto.className =
-        "protocol-subcategory";
-
-    subcategoriaTexto.textContent =
-        subcategoria
-        ? subcategoria.nome
-        : "SEM SUBCATEGORIA";
-
-
-    header.appendChild(titulo);
+    header.appendChild(
+        titulo
+    );
 
     header.appendChild(
         categoriaTexto
     );
 
-    header.appendChild(
-        subcategoriaTexto
-    );
 
+    /* TEXTO */
 
     const texto =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
     texto.className =
         "protocol-text";
+
 
     texto.textContent =
         protocoloSelecionado.texto;
 
 
+    /* AÇÕES */
+
     const actions =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
     actions.className =
         "actions";
 
 
-    /* Copiar */
+    /* COPIAR */
 
     const btnCopiar =
-        document.createElement("button");
+        document.createElement(
+            "button"
+        );
+
 
     btnCopiar.className =
         "primary-button";
 
+
     btnCopiar.textContent =
         "📋 Copiar";
+
 
     btnCopiar.addEventListener(
         "click",
@@ -1431,33 +1121,43 @@ function renderizarProtocolo() {
     );
 
 
-    /* Editar */
+    /* EDITAR */
 
     const btnEditar =
-        document.createElement("button");
+        document.createElement(
+            "button"
+        );
+
 
     btnEditar.className =
         "secondary-button";
 
+
     btnEditar.textContent =
         "✏️ Editar";
 
+
     btnEditar.addEventListener(
         "click",
-        abrirEdicaoProtocolo
+        abrirEdicao
     );
 
 
-    /* Excluir */
+    /* EXCLUIR */
 
     const btnExcluir =
-        document.createElement("button");
+        document.createElement(
+            "button"
+        );
+
 
     btnExcluir.className =
         "danger-button";
 
+
     btnExcluir.textContent =
         "🗑️ Excluir";
+
 
     btnExcluir.addEventListener(
         "click",
@@ -1465,24 +1165,35 @@ function renderizarProtocolo() {
     );
 
 
-    actions.appendChild(btnCopiar);
+    actions.appendChild(
+        btnCopiar
+    );
 
-    actions.appendChild(btnEditar);
+    actions.appendChild(
+        btnEditar
+    );
 
-    actions.appendChild(btnExcluir);
+    actions.appendChild(
+        btnExcluir
+    );
 
 
-    container.appendChild(header);
+    container.appendChild(
+        header
+    );
 
-    container.appendChild(texto);
+    container.appendChild(
+        texto
+    );
 
-    container.appendChild(actions);
+    container.appendChild(
+        actions
+    );
 
 
     conteudo.appendChild(
         container
     );
-
 }
 
 
@@ -1510,8 +1221,8 @@ function mostrarTelaInicial() {
             </p>
 
             <button
-                id="btnNovoWelcomeInterno"
-                class="primary-button">
+                class="primary-button"
+                id="btnNovoWelcomeInterno">
 
                 + Criar protocolo
 
@@ -1522,16 +1233,860 @@ function mostrarTelaInicial() {
     `;
 
 
-    document
-        .getElementById(
+    const btn =
+        document.getElementById(
             "btnNovoWelcomeInterno"
-        )
-        .addEventListener(
+        );
+
+
+    if (btn) {
+
+        btn.addEventListener(
             "click",
             abrirNovoProtocolo
         );
-
+    }
 }
 
 
 /* =====================================================
+   SELECT DE CATEGORIAS
+===================================================== */
+
+function preencherCategoriasSelect(
+    categoriaAtual = ""
+) {
+
+    categoriaProtocolo.innerHTML =
+        "";
+
+
+    categorias.forEach(
+        categoria => {
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+
+            option.value =
+                categoria.id;
+
+
+            option.textContent =
+                categoria.nome;
+
+
+            if (
+                categoria.id ===
+                categoriaAtual
+            ) {
+
+                option.selected =
+                    true;
+            }
+
+
+            categoriaProtocolo.appendChild(
+                option
+            );
+
+        }
+    );
+}
+
+
+/* =====================================================
+   NOVO PROTOCOLO
+===================================================== */
+
+function abrirNovoProtocolo() {
+
+    modoEdicao =
+        false;
+
+
+    tituloModal.textContent =
+        "Novo protocolo";
+
+
+    nomeProtocolo.value =
+        "";
+
+
+    textoProtocolo.value =
+        "";
+
+
+    preencherCategoriasSelect();
+
+
+    if (
+        categoriaSelecionada !==
+        "todos" &&
+        categorias.some(
+            categoria =>
+                categoria.id ===
+                categoriaSelecionada
+        )
+    ) {
+
+        categoriaProtocolo.value =
+            categoriaSelecionada;
+    }
+
+
+    abrirModalProtocolo();
+
+
+    nomeProtocolo.focus();
+}
+
+
+/* =====================================================
+   EDITAR PROTOCOLO
+===================================================== */
+
+function abrirEdicao() {
+
+    if (!protocoloSelecionado) {
+        return;
+    }
+
+
+    modoEdicao =
+        true;
+
+
+    tituloModal.textContent =
+        "Editar protocolo";
+
+
+    nomeProtocolo.value =
+        protocoloSelecionado.nome;
+
+
+    textoProtocolo.value =
+        protocoloSelecionado.texto;
+
+
+    preencherCategoriasSelect(
+        protocoloSelecionado.categoriaId
+    );
+
+
+    abrirModalProtocolo();
+
+
+    nomeProtocolo.focus();
+}
+
+
+/* =====================================================
+   SALVAR PROTOCOLO
+===================================================== */
+
+function salvarFormulario(event) {
+
+    event.preventDefault();
+
+
+    const nome =
+        nomeProtocolo.value.trim();
+
+
+    const texto =
+        textoProtocolo.value.trim();
+
+
+    const categoriaId =
+        categoriaProtocolo.value;
+
+
+    if (!nome) {
+
+        mostrarToast(
+            "Digite o nome do protocolo."
+        );
+
+        return;
+    }
+
+
+    if (!categoriaId) {
+
+        mostrarToast(
+            "Selecione uma categoria."
+        );
+
+        return;
+    }
+
+
+    if (!texto) {
+
+        mostrarToast(
+            "Digite o texto do protocolo."
+        );
+
+        return;
+    }
+
+
+    /* EDITAR */
+
+    if (
+        modoEdicao &&
+        protocoloSelecionado
+    ) {
+
+        protocoloSelecionado.nome =
+            nome;
+
+
+        protocoloSelecionado.texto =
+            texto;
+
+
+        protocoloSelecionado.categoriaId =
+            categoriaId;
+
+
+        const indice =
+            protocolos.findIndex(
+                item =>
+                    item.id ===
+                    protocoloSelecionado.id
+            );
+
+
+        if (
+            indice !== -1
+        ) {
+
+            protocolos[indice] =
+                protocoloSelecionado;
+        }
+
+
+        mostrarToast(
+            "✓ Protocolo atualizado!"
+        );
+
+    }
+
+
+    /* NOVO */
+
+    else {
+
+        const novoProtocolo = {
+
+            id:
+                Date.now().toString(),
+
+            nome:
+                nome,
+
+            texto:
+                texto,
+
+            categoriaId:
+                categoriaId
+
+        };
+
+
+        protocolos.push(
+            novoProtocolo
+        );
+
+
+        protocoloSelecionado =
+            novoProtocolo;
+
+
+        categoriaSelecionada =
+            categoriaId;
+
+
+        mostrarToast(
+            "✓ Protocolo criado!"
+        );
+    }
+
+
+    salvarProtocolos();
+
+    fecharModalProtocolo();
+
+    renderizarCategorias();
+
+    renderizarLista();
+
+    renderizarProtocolo();
+}
+
+
+/* =====================================================
+   EXCLUIR PROTOCOLO
+===================================================== */
+
+function excluirProtocolo() {
+
+    if (!protocoloSelecionado) {
+        return;
+    }
+
+
+    const confirmar =
+        confirm(
+            `Deseja realmente excluir o protocolo "${protocoloSelecionado.nome}"?`
+        );
+
+
+    if (!confirmar) {
+        return;
+    }
+
+
+    protocolos =
+        protocolos.filter(
+            protocolo =>
+                protocolo.id !==
+                protocoloSelecionado.id
+        );
+
+
+    protocoloSelecionado =
+        null;
+
+
+    salvarProtocolos();
+
+
+    renderizarCategorias();
+
+    renderizarLista();
+
+    mostrarTelaInicial();
+
+
+    mostrarToast(
+        "Protocolo excluído."
+    );
+}
+
+
+/* =====================================================
+   COPIAR
+===================================================== */
+
+async function copiarProtocolo() {
+
+    if (!protocoloSelecionado) {
+        return;
+    }
+
+
+    try {
+
+        await navigator.clipboard.writeText(
+            protocoloSelecionado.texto
+        );
+
+
+        mostrarToast(
+            "✓ Protocolo copiado!"
+        );
+
+    } catch (erro) {
+
+        const textarea =
+            document.createElement(
+                "textarea"
+            );
+
+
+        textarea.value =
+            protocoloSelecionado.texto;
+
+
+        textarea.style.position =
+            "fixed";
+
+
+        textarea.style.opacity =
+            "0";
+
+
+        document.body.appendChild(
+            textarea
+        );
+
+
+        textarea.select();
+
+
+        try {
+
+            document.execCommand(
+                "copy"
+            );
+
+
+            mostrarToast(
+                "✓ Protocolo copiado!"
+            );
+
+        } catch (erroCopia) {
+
+            console.error(
+                "Erro ao copiar:",
+                erroCopia
+            );
+
+
+            mostrarToast(
+                "Não foi possível copiar."
+            );
+        }
+
+
+        document.body.removeChild(
+            textarea
+        );
+    }
+}
+
+
+/* =====================================================
+   NOVA CATEGORIA
+===================================================== */
+
+function abrirNovaCategoria() {
+
+    nomeCategoria.value =
+        "";
+
+
+    modalCategoria.classList.add(
+        "show"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+
+
+    nomeCategoria.focus();
+}
+
+
+/* =====================================================
+   SALVAR CATEGORIA
+===================================================== */
+
+function salvarCategoria(event) {
+
+    event.preventDefault();
+
+
+    const nome =
+        nomeCategoria.value.trim();
+
+
+    if (!nome) {
+
+        mostrarToast(
+            "Digite o nome da categoria."
+        );
+
+        return;
+    }
+
+
+    const existe =
+        categorias.some(
+            categoria =>
+                categoria.nome.toLowerCase() ===
+                nome.toLowerCase()
+        );
+
+
+    if (existe) {
+
+        mostrarToast(
+            "Essa categoria já existe."
+        );
+
+        return;
+    }
+
+
+    const novaCategoria = {
+
+        id:
+            "categoria-" +
+            Date.now(),
+
+        nome:
+            nome.toUpperCase()
+
+    };
+
+
+    categorias.push(
+        novaCategoria
+    );
+
+
+    salvarCategorias();
+
+
+    categoriaSelecionada =
+        novaCategoria.id;
+
+
+    renderizarCategorias();
+
+    renderizarLista();
+
+
+    fecharModalCategoria();
+
+
+    mostrarToast(
+        "✓ Categoria criada!"
+    );
+}
+
+
+/* =====================================================
+   MODAL PROTOCOLO
+===================================================== */
+
+function abrirModalProtocolo() {
+
+    modalProtocolo.classList.add(
+        "show"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+}
+
+
+function fecharModalProtocolo() {
+
+    modalProtocolo.classList.remove(
+        "show"
+    );
+
+
+    document.body.style.overflow =
+        "";
+}
+
+
+/* =====================================================
+   MODAL CATEGORIA
+===================================================== */
+
+function fecharModalCategoria() {
+
+    modalCategoria.classList.remove(
+        "show"
+    );
+
+
+    document.body.style.overflow =
+        "";
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function mostrarToast(mensagem) {
+
+    const antigo =
+        document.querySelector(
+            ".toast"
+        );
+
+
+    if (antigo) {
+        antigo.remove();
+    }
+
+
+    const toast =
+        document.createElement(
+            "div"
+        );
+
+
+    toast.className =
+        "toast";
+
+
+    toast.textContent =
+        mensagem;
+
+
+    document.body.appendChild(
+        toast
+    );
+
+
+    setTimeout(
+        () => {
+
+            if (toast.parentNode) {
+                toast.remove();
+            }
+
+        },
+        2500
+    );
+}
+
+
+/* =====================================================
+   PESQUISA
+===================================================== */
+
+function pesquisar() {
+
+    renderizarLista();
+}
+
+
+/* =====================================================
+   EVENTOS
+===================================================== */
+
+
+/* NOVO PROTOCOLO */
+
+document
+    .getElementById("btnNovo")
+    .addEventListener(
+        "click",
+        abrirNovoProtocolo
+    );
+
+
+/* NOVO PROTOCOLO TELA INICIAL */
+
+document
+    .getElementById("btnNovoWelcome")
+    .addEventListener(
+        "click",
+        abrirNovoProtocolo
+    );
+
+
+/* SALVAR PROTOCOLO */
+
+formProtocolo.addEventListener(
+    "submit",
+    salvarFormulario
+);
+
+
+/* FECHAR PROTOCOLO */
+
+document
+    .getElementById("btnFecharModal")
+    .addEventListener(
+        "click",
+        fecharModalProtocolo
+    );
+
+
+document
+    .getElementById("btnCancelar")
+    .addEventListener(
+        "click",
+        fecharModalProtocolo
+    );
+
+
+/* NOVA CATEGORIA */
+
+document
+    .getElementById("btnNovaCategoria")
+    .addEventListener(
+        "click",
+        abrirNovaCategoria
+    );
+
+
+/* SALVAR CATEGORIA */
+
+formCategoria.addEventListener(
+    "submit",
+    salvarCategoria
+);
+
+
+/* FECHAR CATEGORIA */
+
+document
+    .getElementById("btnFecharCategoria")
+    .addEventListener(
+        "click",
+        fecharModalCategoria
+    );
+
+
+document
+    .getElementById("btnCancelarCategoria")
+    .addEventListener(
+        "click",
+        fecharModalCategoria
+    );
+
+
+/* PESQUISA */
+
+campoPesquisa.addEventListener(
+    "input",
+    pesquisar
+);
+
+
+/* CLICAR FORA DOS MODAIS */
+
+modalProtocolo.addEventListener(
+    "click",
+    event => {
+
+        if (
+            event.target ===
+            modalProtocolo
+        ) {
+
+            fecharModalProtocolo();
+        }
+    }
+);
+
+
+modalCategoria.addEventListener(
+    "click",
+    event => {
+
+        if (
+            event.target ===
+            modalCategoria
+        ) {
+
+            fecharModalCategoria();
+        }
+    }
+);
+
+
+/* ESC */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key !==
+            "Escape"
+        ) {
+
+            return;
+        }
+
+
+        if (
+            modalProtocolo.classList.contains(
+                "show"
+            )
+        ) {
+
+            fecharModalProtocolo();
+        }
+
+
+        if (
+            modalCategoria.classList.contains(
+                "show"
+            )
+        ) {
+
+            fecharModalCategoria();
+        }
+    }
+);
+
+
+/* =====================================================
+   ATALHOS
+===================================================== */
+
+
+/* CTRL + K */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            (event.ctrlKey ||
+             event.metaKey) &&
+            event.key.toLowerCase() ===
+            "k"
+        ) {
+
+            event.preventDefault();
+
+            campoPesquisa.focus();
+        }
+    }
+);
+
+
+/* CTRL + SHIFT + C */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.ctrlKey &&
+            event.shiftKey &&
+            event.key.toLowerCase() ===
+            "c"
+        ) {
+
+            event.preventDefault();
+
+            copiarProtocolo();
+        }
+    }
+);
+
+
+/* =====================================================
+   INICIALIZAÇÃO
+===================================================== */
+
+renderizarCategorias();
+
+renderizarLista();
+
+mostrarTelaInicial();
+
+console.log(
+    "✓ Meus Protocolos carregado com sucesso!"
+);

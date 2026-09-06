@@ -8,17 +8,13 @@
     <title>Meus Protocolos</title>
 
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
 <div class="app">
 
-    <!-- ==================================================
-         SIDEBAR
-    =================================================== -->
-
+    <!-- SIDEBAR -->
     <aside class="sidebar">
 
         <div class="sidebar-header">
@@ -39,7 +35,6 @@
 
 
         <!-- PESQUISA -->
-
         <div class="search-container">
 
             <span class="search-icon">⌕</span>
@@ -54,7 +49,6 @@
 
 
         <!-- CATEGORIAS -->
-
         <div class="categories-section">
 
             <div class="section-header">
@@ -70,13 +64,30 @@
 
             </div>
 
-            <div id="listaCategorias" class="category-tree"></div>
+            <div
+                id="listaCategorias"
+                class="category-list">
+            </div>
+
+        </div>
+
+
+        <!-- PROTOCOLOS -->
+        <div class="protocol-section">
+
+            <div class="section-title">
+                PROTOCOLOS
+            </div>
+
+            <div
+                id="listaProtocolos"
+                class="protocol-list">
+            </div>
 
         </div>
 
 
         <!-- RODAPÉ -->
-
         <div class="sidebar-footer">
 
             <span id="contadorProtocolos">
@@ -88,10 +99,7 @@
     </aside>
 
 
-    <!-- ==================================================
-         CONTEÚDO
-    =================================================== -->
-
+    <!-- CONTEÚDO -->
     <main
         class="content"
         id="conteudo">
@@ -126,11 +134,10 @@
 </div>
 
 
-<!-- ==================================================
-     MODAL PROTOCOLO
-=================================================== -->
-
-<div id="modalProtocolo" class="modal">
+<!-- MODAL DE PROTOCOLO -->
+<div
+    id="modalProtocolo"
+    class="modal">
 
     <div class="modal-box">
 
@@ -168,7 +175,7 @@
                 <input
                     type="text"
                     id="nomeProtocolo"
-                    placeholder="Ex.: PON PISCANDO — RESOLVIDO"
+                    placeholder="Ex.: ALTERAÇÃO DE SENHA"
                     maxlength="100"
                     required>
 
@@ -183,20 +190,6 @@
 
                 <select
                     id="categoriaProtocolo"
-                    required>
-                </select>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="subcategoriaProtocolo">
-                    Subcategoria
-                </label>
-
-                <select
-                    id="subcategoriaProtocolo"
                     required>
                 </select>
 
@@ -241,11 +234,10 @@
 </div>
 
 
-<!-- ==================================================
-     MODAL CATEGORIA
-=================================================== -->
-
-<div id="modalCategoria" class="modal">
+<!-- MODAL DE CATEGORIA -->
+<div
+    id="modalCategoria"
+    class="modal">
 
     <div class="modal-box small-modal">
 
@@ -253,12 +245,13 @@
 
             <div>
 
-                <h2 id="tituloCategoriaModal">
+                <h2>
                     Nova categoria
                 </h2>
 
                 <p>
-                    Crie uma categoria para organizar seus protocolos.
+                    Crie uma categoria para organizar
+                    seus protocolos.
                 </p>
 
             </div>
@@ -283,7 +276,7 @@
                 <input
                     type="text"
                     id="nomeCategoria"
-                    placeholder="Ex.: INTERNET / CONEXÃO"
+                    placeholder="Ex.: INTERNET"
                     maxlength="50"
                     required>
 
@@ -302,7 +295,7 @@
                 <button
                     type="submit"
                     class="primary-button">
-                    Salvar categoria
+                    Criar categoria
                 </button>
 
             </div>
@@ -314,93 +307,10 @@
 </div>
 
 
-<!-- ==================================================
-     MODAL SUBCATEGORIA
-=================================================== -->
-
-<div id="modalSubcategoria" class="modal">
-
-    <div class="modal-box small-modal">
-
-        <div class="modal-header">
-
-            <div>
-
-                <h2 id="tituloSubcategoriaModal">
-                    Nova subcategoria
-                </h2>
-
-                <p>
-                    Organize os protocolos dentro de uma categoria.
-                </p>
-
-            </div>
-
-            <button
-                id="btnFecharSubcategoria"
-                class="btn-close">
-                ×
-            </button>
-
-        </div>
-
-
-        <form id="formSubcategoria">
-
-            <div class="form-group">
-
-                <label for="categoriaDaSubcategoria">
-                    Categoria
-                </label>
-
-                <select
-                    id="categoriaDaSubcategoria"
-                    required>
-                </select>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="nomeSubcategoria">
-                    Nome da subcategoria
-                </label>
-
-                <input
-                    type="text"
-                    id="nomeSubcategoria"
-                    placeholder="Ex.: PON"
-                    maxlength="50"
-                    required>
-
-            </div>
-
-
-            <div class="modal-actions">
-
-                <button
-                    type="button"
-                    id="btnCancelarSubcategoria"
-                    class="secondary-button">
-                    Cancelar
-                </button>
-
-                <button
-                    type="submit"
-                    class="primary-button">
-                    Salvar subcategoria
-                </button>
-
-            </div>
-
-        </form>
-
-    </div>
-
-</div>
-
-
+<!-- JAVASCRIPT
+     IMPORTANTE:
+     O script fica somente aqui no final do body.
+-->
 <script src="app.js"></script>
 
 </body>
