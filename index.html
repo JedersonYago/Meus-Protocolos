@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Meus Protocolos</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ==================================================
+         SIDEBAR
+    =================================================== -->
+
+    <aside class="sidebar">
+
+        <!-- Cabeçalho -->
+
+        <div class="sidebar-header">
+
+            <div class="brand">
+
+                <span class="brand-icon">▣</span>
+
+                <span>PROTOCOLOS</span>
+
+            </div>
+
+            <button
+                id="btnNovo"
+                class="btn-add"
+                title="Novo protocolo">
+
+                +
+
+            </button>
+
+        </div>
+
+
+        <!-- Pesquisa -->
+
+        <div class="search-container">
+
+            <span class="search-icon">⌕</span>
+
+            <input
+                type="text"
+                id="campoPesquisa"
+                placeholder="Pesquisar protocolos..."
+                autocomplete="off">
+
+        </div>
+
+
+        <!-- ==================================================
+             CATEGORIAS
+        =================================================== -->
+
+        <div class="categories-section">
+
+            <div class="section-header">
+
+                <span>CATEGORIAS</span>
+
+                <button
+                    id="btnNovaCategoria"
+                    class="btn-category-add"
+                    title="Nova categoria">
+
+                    +
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="listaCategorias"
+                class="category-list">
+            </div>
+
+        </div>
+
+
+        <!-- ==================================================
+             PROTOCOLOS
+        =================================================== -->
+
+        <div class="protocol-section">
+
+            <div class="section-title">
+                PROTOCOLOS
+            </div>
+
+            <div
+                id="listaProtocolos"
+                class="protocol-list">
+            </div>
+
+        </div>
+
+
+        <!-- Rodapé -->
+
+        <div class="sidebar-footer">
+
+            <span id="contadorProtocolos">
+                0 protocolos
+            </span>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ==================================================
+         CONTEÚDO
+    =================================================== -->
+
+    <main
+        class="content"
+        id="conteudo">
+
+        <div class="welcome">
+
+            <div class="welcome-icon">
+                📋
+            </div>
+
+            <h1>
+                Meus Protocolos
+            </h1>
+
+            <p>
+                Selecione um protocolo na lateral
+                ou crie um novo para começar.
+            </p>
+
+            <button
+                id="btnNovoWelcome"
+                class="primary-button">
+
+                + Criar protocolo
+
+            </button>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- ==================================================
+     MODAL DE PROTOCOLO
+=================================================== -->
+
+<div
+    id="modalProtocolo"
+    class="modal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <div>
+
+                <h2 id="tituloModal">
+                    Novo protocolo
+                </h2>
+
+                <p>
+                    Preencha as informações abaixo.
+                </p>
+
+            </div>
+
+            <button
+                id="btnFecharModal"
+                class="btn-close">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <form id="formProtocolo">
+
+            <!-- Nome -->
+
+            <div class="form-group">
+
+                <label for="nomeProtocolo">
+                    Nome do protocolo
+                </label>
+
+                <input
+                    type="text"
+                    id="nomeProtocolo"
+                    placeholder="Ex.: ALTERAÇÃO DE SENHA"
+                    maxlength="100"
+                    required>
+
+            </div>
+
+
+            <!-- Categoria -->
+
+            <div class="form-group">
+
+                <label for="categoriaProtocolo">
+                    Categoria
+                </label>
+
+                <select
+                    id="categoriaProtocolo"
+                    required>
+                </select>
+
+            </div>
+
+
+            <!-- Texto -->
+
+            <div class="form-group">
+
+                <label for="textoProtocolo">
+                    Texto do protocolo
+                </label>
+
+                <textarea
+                    id="textoProtocolo"
+                    placeholder="Digite aqui o texto que será utilizado no atendimento..."
+                    required></textarea>
+
+            </div>
+
+
+            <!-- Ações -->
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    id="btnCancelar"
+                    class="secondary-button">
+
+                    Cancelar
+
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-button">
+
+                    Salvar protocolo
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     MODAL DE CATEGORIA
+=================================================== -->
+
+<div
+    id="modalCategoria"
+    class="modal">
+
+    <div class="modal-box small-modal">
+
+        <div class="modal-header">
+
+            <div>
+
+                <h2>
+                    Nova categoria
+                </h2>
+
+                <p>
+                    Crie uma categoria para organizar
+                    seus protocolos.
+                </p>
+
+            </div>
+
+            <button
+                id="btnFecharCategoria"
+                class="btn-close">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <form id="formCategoria">
+
+            <div class="form-group">
+
+                <label for="nomeCategoria">
+                    Nome da categoria
+                </label>
+
+                <input
+                    type="text"
+                    id="nomeCategoria"
+                    placeholder="Ex.: INTERNET"
+                    maxlength="50"
+                    required>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    id="btnCancelarCategoria"
+                    class="secondary-button">
+
+                    Cancelar
+
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-button">
+
+                    Criar categoria
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     JAVASCRIPT
+=================================================== -->
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
