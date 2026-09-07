@@ -1,153 +1,151 @@
-# Meus-Protocolos
-
 📋 Meus Protocolos
 
-Uma aplicação web simples e prática para organizar, consultar e gerenciar protocolos de atendimento.
+Aplicação web desenvolvida para organizar, consultar e gerenciar protocolos de atendimento de forma rápida e prática.
 
-O Meus Protocolos foi desenvolvido para facilitar o acesso a textos utilizados durante atendimentos, permitindo organizar os conteúdos por categorias e encontrar rapidamente o protocolo necessário.
+Com o Meus Protocolos, é possível cadastrar protocolos, separá-los por categorias, pesquisar conteúdos e copiar rapidamente um protocolo para utilização durante um atendimento.
 
-🚧 Projeto em desenvolvimento.
+🚀 Demonstração
+
+🔗 Acesse o projeto:
+https://jedersonyago.github.io/Meus-Protocolos/
 
 ✨ Funcionalidades
-📋 Criar protocolos com nome, categoria e texto.
-✏️ Editar protocolos existentes.
-🗑️ Excluir protocolos.
-📋 Copiar o conteúdo de um protocolo para a área de transferência.
-🔎 Pesquisar protocolos pelo conteúdo disponível.
-🗂️ Organizar protocolos por categorias.
-➕ Criar novas categorias.
-✏️ Editar categorias.
-🗑️ Excluir categorias.
-💾 Persistência local dos dados utilizando localStorage.
-📱 Interface responsiva e adaptada para diferentes tamanhos de tela.
-🖥️ Interface
+📋 Criar novos protocolos
+✏️ Editar protocolos existentes
+🗑️ Excluir protocolos
+📋 Copiar protocolos para a área de transferência
+🔎 Pesquisar protocolos
+🗂️ Organizar protocolos por categorias
+➕ Criar novas categorias
+✏️ Editar categorias
+🗑️ Excluir categorias
+💾 Salvar os dados utilizando localStorage
+📱 Interface responsiva
+🖥️ Preview
 
-A aplicação possui uma interface dividida em duas áreas principais:
+Em breve será adicionada uma imagem ou GIF demonstrando o funcionamento da aplicação.
 
-Barra lateral: pesquisa e navegação entre as categorias.
-Área principal: visualização e gerenciamento dos protocolos.
+🛠️ Tecnologias
 
-Os protocolos são apresentados em cartões contendo o nome, categoria, conteúdo e ações disponíveis.
+Este projeto foi desenvolvido utilizando:
 
-🛠️ Tecnologias utilizadas
-HTML5 — estrutura da aplicação.
-CSS3 — estilização e responsividade.
-JavaScript — lógica da aplicação e gerenciamento dos dados.
-LocalStorage — armazenamento dos protocolos e categorias diretamente no navegador.
-📁 Estrutura do projeto
+HTML5
+CSS3
+JavaScript
+LocalStorage
+📂 Estrutura do projeto
 Meus-Protocolos/
+│
 ├── logo/
 │   └── logo.jpeg
+│
 ├── index.html
 ├── style.css
 ├── script.js
 ├── app.js
 └── README.md
 
-Principais arquivos
+📄 Principais arquivos
 Arquivo	Descrição
-index.html	Estrutura da interface da aplicação
-style.css	Estilos, layout e responsividade
-script.js	Lógica principal e gerenciamento dos protocolos
-app.js	Código JavaScript adicional da aplicação
-logo/	Recursos visuais utilizados pela interface
-💾 Armazenamento
+index.html	Estrutura da aplicação
+style.css	Estilos e responsividade
+script.js	Lógica principal da aplicação
+app.js	Funções e lógica complementar
+logo/	Arquivos relacionados à identidade visual
+💾 Armazenamento dos dados
 
-Os dados são armazenados localmente no navegador utilizando a API localStorage.
+A aplicação utiliza o LocalStorage do navegador para armazenar os protocolos e categorias.
 
-São utilizados dois espaços de armazenamento:
-
-meus_protocolos_categorias
-meus_protocolos_protocolos
-
-
-Isso significa que os dados ficam associados ao navegador e ao dispositivo em que a aplicação está sendo utilizada.
+Os dados são mantidos localmente no dispositivo e navegador utilizados.
 
 ⚠️ Importante
 
-Como os dados são armazenados localmente:
+Como não existe um banco de dados externo, os dados:
 
-não existe banco de dados remoto;
-os protocolos não são sincronizados entre dispositivos;
-limpar os dados do navegador pode apagar os protocolos salvos;
-utilizar outro navegador resulta em um armazenamento separado.
-🚀 Como executar
-
-Por ser uma aplicação web estática, não é necessário instalar dependências para executá-la.
-
+Não são sincronizados entre dispositivos.
+Não ficam disponíveis automaticamente em outros navegadores.
+Podem ser perdidos caso os dados do navegador sejam apagados.
+▶️ Como executar o projeto
 1. Clone o repositório
 git clone https://github.com/JedersonYago/Meus-Protocolos.git
 
-2. Entre na pasta
+2. Acesse a pasta
 cd Meus-Protocolos
 
 3. Execute a aplicação
 
-Abra o arquivo index.html diretamente no navegador.
+Abra o arquivo index.html no navegador.
 
-Também é possível utilizar uma extensão como Live Server no VS Code ou qualquer servidor HTTP local.
+Também é possível utilizar o Live Server no Visual Studio Code para executar o projeto localmente.
 
-📝 Como utilizar
+📖 Como utilizar
 Criando um protocolo
-Clique em + Criar protocolo.
+Clique em Criar protocolo.
 Informe o nome do protocolo.
-Selecione uma categoria.
-Digite o texto que será utilizado no atendimento.
-Clique em Salvar protocolo.
+Escolha uma categoria.
+Adicione o conteúdo.
+Salve o protocolo.
 Editando um protocolo
-
-Na lista de protocolos, clique em Editar, altere as informações desejadas e salve novamente.
-
+Localize o protocolo desejado.
+Clique em Editar.
+Faça as alterações.
+Salve novamente.
 Copiando um protocolo
 
-Clique em Copiar para enviar o texto do protocolo diretamente para a área de transferência.
+Utilize o botão Copiar para enviar o conteúdo do protocolo diretamente para a área de transferência.
 
-Criando uma categoria
+Gerenciando categorias
 
-Na barra lateral, utilize o botão + ao lado de "CATEGORIAS" para criar uma nova categoria e manter os protocolos organizados.
+As categorias podem ser criadas, editadas e excluídas para manter os protocolos organizados.
 
-🎯 Objetivo
+🎯 Objetivo do projeto
 
-O projeto tem como objetivo tornar o gerenciamento de protocolos de atendimento mais rápido, organizado e acessível, evitando a necessidade de procurar manualmente textos recorrentes em diferentes arquivos ou documentos.
+O projeto foi criado com o objetivo de facilitar o acesso a protocolos e textos utilizados com frequência durante atendimentos, tornando a consulta mais rápida e evitando a necessidade de procurar essas informações em diferentes arquivos ou documentos.
 
-🔮 Próximos passos
+🔮 Melhorias futuras
 
-Algumas melhorias que podem ser consideradas para versões futuras:
+Algumas funcionalidades que podem ser implementadas futuramente:
 
- Exportação dos protocolos para JSON.
- Importação de protocolos.
- Backup e restauração dos dados.
- Sincronização com banco de dados.
- Autenticação de usuários.
- Compartilhamento de protocolos.
- Modo escuro.
- Atalhos de teclado.
- Ordenação e filtros avançados.
- PWA para utilização como aplicativo.
- Histórico de alterações.
- Testes automatizados.
+ Exportar protocolos para JSON
+ Importar protocolos
+ Sistema de backup e restauração
+ Banco de dados
+ Sincronização entre dispositivos
+ Sistema de autenticação
+ Modo escuro
+ Filtros avançados
+ Atalhos de teclado
+ Transformar em PWA
+ Testes automatizados
 🤝 Contribuição
 
 Contribuições são bem-vindas!
 
-Para contribuir:
+Para contribuir com o projeto:
 
-Faça um fork do projeto.
-Crie uma branch para sua alteração:
+Faça um Fork do repositório.
+Crie uma nova branch:
 git checkout -b minha-feature
 
 Faça suas alterações.
-Faça o commit:
+Realize o commit:
 git commit -m "feat: adiciona nova funcionalidade"
 
-Envie a branch:
+Envie para o GitHub:
 git push origin minha-feature
 
 Abra um Pull Request.
+👨‍💻 Autor
+
+Desenvolvido por Jederson Yago.
+
+🔗 GitHub:
+https://github.com/JedersonYago
+
 📄 Licença
 
 Este projeto ainda não possui uma licença definida.
 
-Caso o projeto seja disponibilizado como código aberto, recomenda-se adicionar uma licença, como MIT, para deixar claro como outras pessoas podem utilizar e modificar o código.
+Caso o projeto seja disponibilizado como código aberto, recomenda-se adicionar uma licença, como a MIT License.
 
-Desenvolvido por JedersonYago.
+⭐ Se este projeto foi útil para você, considere deixar uma estrela no repositório!
